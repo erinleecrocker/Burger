@@ -1,9 +1,9 @@
-<li>
+<li class="d-flex flex-column justify-content-center">
 	{{burger_name}}
-
-	<button class="change-devoured" data-id="{{id}}" data-newdevour="{{devour}}">
+	<img src="https://illustoon.com/photo/4728.png" alt="burger">
+	<button class="change-devoured mt-2 " data-id="{{id}}" data-newdevour="{{devour}}">
 		{{#if devour}}DEVOUR!{{else}}YUM YUM!{{/if}}
 	</button>
 
-	<button class="delete-burger" data-id="{{this.id}}">DELETE!</button>
+	<button class="delete-burger mt-2" data-id="{{this.id}}">DELETE!</button>
 </li>

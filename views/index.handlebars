@@ -1,43 +1,58 @@
 
 <div class="container">
-    
-<h1>Burgers!</h1>
+<div class = "row justify-content-center"> <h1>Burgers!</h1> </div>
 
-<h2>Waiting to be Devoured...</h2>
+<div class = "row"> 
+    <div class = "col-sm-6 justify-content-center">
+        <div class="row justify-content-center">
+        <h2>Waiting to be Devoured...</h2>
+        </div>
+        <div class = "row justify-content-center">
+        <ul class="d-flex flex-row justify-content-center" id="notDevoured">
+            {{#each burgers}}
+            {{#unless devoured}}
+            {{> burgers/burger-block devour=true}}
+            {{/unless}}
+            {{/each}}
+        </ul>
+        </div>
 
-<ul id="notDevoured">
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{> burgers/burger-block devour=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
+    </div>
 
-<h2>DEVOURED!</h2>
+    <div class = "col-sm-6">
+        <div class="row justify-content-center">
+        <h2>DEVOURED!</h2>
+        </div>
+        <div class="row justify-content-center">
+        <ul class = "d-flex flex-row justify-content-center"id="beenDevoured">
+        {{#each burgers}}
+        {{#if devoured}}
+        {{> burgers/burger-block devour=false}}
+        {{/if}}
+        {{/each}}
+        </div>
+    </ul>
+    </div>
+</div>
 
-<ul id="beenDevoured">
-  {{#each burgers}}
-    {{#if devoured}}
-      {{> burgers/burger-block devour=false}}
-    {{/if}}
-  {{/each}}
-</ul>
+<div class = "row justify-content-center mt-2">
+    <h2>Make a Burger</h2>
+</div>
+<div class = "row justify-content-center">
+    <form class="create-form">
 
-<h2>Make a Burger</h2>
-<form class="create-form">
+    <div class="form-group justify-content-center">
+        <label for="bu">Burger Name:</label>
+        <input type="text" id="bu" name="name">
+    </div>
 
-  <div class="form-group">
-    <label for="bu">Burger Name:</label>
-    <input type="text" id="bu" name="name">
-  </div>
+    <div class="form-group">
+        <label for="devoured">Devoured?</label><br>
+        <input type="radio" name="devoured" value="1" checked> Devoured!<br>
+        <input type="radio" name="devoured" value="0"> Wait to Devour
+    </div>
 
-  <div class="form-group">
-    <label for="devoured">Devoured?</label><br>
-    <input type="radio" name="devoured" value="1" checked> Devoured!<br>
-    <input type="radio" name="devoured" value="0"> Devour
-  </div>
-
-  <button type="submit">Add Burger</button>
-</form>
-
+    <button type="submit">Add Burger</button>
+    </form>
+</div>
 </div>
