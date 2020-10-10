@@ -1,9 +1,13 @@
 var express = require("express");
-var burger = require("../models/burger.js");
-
 var router = express.Router();
 
+var burger = require("../models/burger.js");
+
+
+
 // GET
+
+// Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
     burger.all(function(data) {
       var hbsObject = {
@@ -12,19 +16,19 @@ router.get("/", function(req, res) {
       console.log(hbsObject);
       res.render("index", hbsObject);
     });
-});
+  });
 
 // POST
 router.post("/api/burgers", function(req, res) {
     burger.create([
-      "name", "devoured"
+      "burger_name", "devoured"
     ], [
-      req.body.name, req.body.devoured
+      req.body.burger_name, req.body.devoured
     ], function(result) {
       // Send back the ID of the new quote
       res.json({ id: result.insertId });
     });
-});
+  });
 
 // PUT
 router.put("/api/burgers/:id", function(req, res) {
@@ -42,7 +46,7 @@ router.put("/api/burgers/:id", function(req, res) {
         res.status(200).end();
       }
     });
-});
+  });
 
 // DELETE
 router.delete("/api/burgers/:id", function(req, res) {
@@ -56,7 +60,7 @@ router.delete("/api/burgers/:id", function(req, res) {
         res.status(200).end();
       }
     });
-});
+  });
 
 // Export routes for server.js to use.
 module.exports = router;
